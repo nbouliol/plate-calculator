@@ -1,20 +1,34 @@
 import React, { useState } from 'react';
 import { Dumbbell } from 'lucide-react';
 
+interface AvailableWeights {
+  [key: string]: boolean;
+}
+
+interface CalculationResult {
+  platesPerSide: number[];
+  totalPlatesWeight: number;
+  actualTotal: number;
+}
+
+interface PlateCount {
+  [key: string]: number;
+}
+
 export default function App() {
-  const [barWeight, setBarWeight] = useState(20);
-  const [targetWeight, setTargetWeight] = useState('');
-  const [availableWeights, setAvailableWeights] = useState({
+  const [barWeight, setBarWeight] = useState<number>(20);
+  const [targetWeight, setTargetWeight] = useState<string>('');
+  const [availableWeights, setAvailableWeights] = useState<AvailableWeights>({
     20: true,
     10: true,
     5: true,
     2.5: true,
     1.25: true
   });
-  const [result, setResult] = useState(null);
-  const [error, setError] = useState('');
+  const [result, setResult] = useState<CalculationResult | null>(null);
+  const [error, setError] = useState<string>('');
 
-  const calculateWeights = () => {
+  const calculateWeights = (): void => {
     setError('');
     setResult(null);
 
@@ -58,16 +72,16 @@ export default function App() {
     });
   };
 
-  const toggleWeight = (weight) => {
-    setAvailableWeights(prev => ({
+  const toggleWeight = (weight: string): void => {
+    setAvailableWeights((prev: AvailableWeights) => ({
       ...prev,
       [weight]: !prev[weight]
     }));
     setResult(null);
   };
 
-  const countPlates = (plates) => {
-    const counts = {};
+  const countPlates = (plates: number[]): PlateCount => {
+    const counts: PlateCount = {};
     plates.forEach(plate => {
       counts[plate] = (counts[plate] || 0) + 1;
     });
@@ -91,7 +105,7 @@ export default function App() {
               <input
                 type="number"
                 value={barWeight}
-                onChange={(e) => {
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   setBarWeight(parseFloat(e.target.value) || 0);
                   setResult(null);
                 }}
@@ -108,7 +122,7 @@ export default function App() {
               <input
                 type="number"
                 value={targetWeight}
-                onChange={(e) => {
+                onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
                   setTargetWeight(e.target.value);
                   setResult(null);
                 }}
