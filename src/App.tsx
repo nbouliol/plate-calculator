@@ -21,8 +21,8 @@ export default function App() {
   } = useWeightCalculator();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-4 sm:p-8">
-      <div className="max-w-2xl mx-auto">
+    <div className="h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-4 sm:p-8 overflow-y-auto">
+      <div className="max-w-2xl mx-auto min-h-full flex flex-col justify-center">
         <div className="bg-slate-800/50 backdrop-blur-sm rounded-2xl shadow-2xl p-6 sm:p-8 border border-slate-700">
           <Header />
 
