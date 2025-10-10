@@ -5,5 +5,6 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx']
-  }
+  },
+  base: '/plate-calculator/'
 })
