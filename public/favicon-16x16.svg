@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- Background -->
+  <rect width="16" height="16" fill="#0f172a" rx="2"/>
+  
+  <!-- Simplified dumbbell for 16x16 -->
+  <!-- Left weight -->
+  <rect x="1" y="4" width="3" height="8" rx="0.5" fill="#06b6d4"/>
+  <rect x="1.5" y="4.5" width="2" height="7" rx="0.3" fill="#67e8f9"/>
+  
+  <!-- Right weight -->
+  <rect x="12" y="4" width="3" height="8" rx="0.5" fill="#06b6d4"/>
+  <rect x="12.5" y="4.5" width="2" height="7" rx="0.3" fill="#67e8f9"/>
+  
+  <!-- Handle -->
+  <rect x="4" y="6" width="8" height="4" rx="2" fill="#cbd5e1"/>
+  <rect x="4" y="6.5" width="8" height="3" rx="1.5" fill="#e2e8f0"/>
+  
+  <!-- Handle grip -->
+  <line x1="6" y1="7" x2="6" y2="9" stroke="#64748b" stroke-width="0.3"/>
+  <line x1="8" y1="7" x2="8" y2="9" stroke="#64748b" stroke-width="0.3"/>
+  <line x1="10" y1="7" x2="10" y2="9" stroke="#64748b" stroke-width="0.3"/>
+</svg>
