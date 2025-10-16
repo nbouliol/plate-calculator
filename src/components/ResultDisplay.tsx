@@ -1,4 +1,4 @@
-import React from 'react';
+import { forwardRef } from 'react';
 import { CalculationResult } from '../types';
 import { countPlates } from '../utils/weightCalculator';
 
@@ -7,7 +7,7 @@ interface ResultDisplayProps {
   barWeight: number;
 }
 
-export const ResultDisplay: React.FC<ResultDisplayProps> = ({ result, barWeight }) => {
+export const ResultDisplay= forwardRef<HTMLDivElement, ResultDisplayProps>(({ result, barWeight }, ref) => {
   return (
     <div className="space-y-4 animate-[fadeIn_0.5s_ease-in]">
       <div className="bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 rounded-lg p-6">
@@ -29,7 +29,7 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ result, barWeight 
           </div>
         </div>
 
-        <div className="bg-slate-800/50 rounded-lg p-4">
+        <div className="bg-slate-800/50 rounded-lg p-4" ref={ref}>
           <h3 className="text-lg font-semibold text-white mb-3">Par côté:</h3>
           <div className="space-y-2">
             {Object.entries(countPlates(result.platesPerSide))
@@ -57,4 +57,4 @@ export const ResultDisplay: React.FC<ResultDisplayProps> = ({ result, barWeight 
       </div>
     </div>
   );
-};
+});

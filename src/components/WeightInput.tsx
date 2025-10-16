@@ -7,6 +7,7 @@ interface WeightInputProps {
   placeholder?: string;
   min?: string;
   step?: string;
+  autofocus?: boolean;
 }
 
 export const WeightInput: React.FC<WeightInputProps> = ({
@@ -15,7 +16,8 @@ export const WeightInput: React.FC<WeightInputProps> = ({
   onChange,
   placeholder,
   min = "0",
-  step = "0.5"
+  step = "0.5",
+  autofocus
 }) => {
   return (
     <div className="space-y-2">
@@ -30,6 +32,7 @@ export const WeightInput: React.FC<WeightInputProps> = ({
         placeholder={placeholder}
         min={min}
         step={step}
+        autoFocus={autofocus}
       />
     </div>
   );

@@ -6,6 +6,7 @@ import {
   ErrorDisplay,
   ResultDisplay
 } from './components';
+import { useRef } from 'react';
 
 export default function App() {
   const {
@@ -20,6 +21,16 @@ export default function App() {
     handleCalculate
   } = useWeightCalculator();
 
+  const resultRef = useRef<HTMLDivElement>(null);
+
+  function calculateAndScroll() {
+    handleCalculate();
+    setTimeout(() => {
+      
+      resultRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
+  }
+  
   return (
     <div className="h-full bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-4 sm:p-8 overflow-y-auto">
       <div className="max-w-2xl mx-auto min-h-full flex flex-col justify-center">
@@ -28,16 +39,17 @@ export default function App() {
 
           <div className="space-y-6">
             <WeightInput
-              label="Poids de la barre (kg)"
-              value={barWeight}
-              onChange={handleBarWeightChange}
-            />
-
-            <WeightInput
               label="Poids total désiré (kg)"
               value={targetWeight}
               onChange={handleTargetWeightChange}
               placeholder="Ex: 100"
+              autofocus
+            />
+
+            <WeightInput
+              label="Poids de la barre (kg)"
+              value={barWeight}
+              onChange={handleBarWeightChange}
             />
 
             <WeightSelector
@@ -46,7 +58,7 @@ export default function App() {
             />
 
             <button
-              onClick={handleCalculate}
+              onClick={calculateAndScroll}
               className="w-full bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-600 hover:to-blue-600 text-white font-bold py-4 px-6 rounded-lg transition-all transform hover:scale-[1.02] active:scale-[0.98] shadow-lg shadow-cyan-500/30"
             >
               Calculer
@@ -55,7 +67,7 @@ export default function App() {
             <ErrorDisplay error={error} />
 
             {result && (
-              <ResultDisplay result={result} barWeight={barWeight} />
+              <ResultDisplay result={result} barWeight={barWeight} ref={resultRef} />
             )}
           </div>
         </div>
